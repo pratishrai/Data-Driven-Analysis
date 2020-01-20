@@ -13,7 +13,7 @@ top_groups <- groups[groups_order, ]
 
 top_50_groups <- top_groups[1:50, ]
 
-group_viz <- ggplot(top_50_groups, aes(group_name, freq)) + geom_bar(stat = "identity", col = "blue") + coord_flip()
+group_viz <- ggplot(top_50_groups, aes(reorder(group_name, freq), freq)) + geom_bar(stat = "identity", col = "red", fill = "yellow") + coord_flip()
 
 # 3. Obtaining a count (frequency) of events for each city (venue_city) and visualizing the top 50 cities:
 
@@ -26,7 +26,7 @@ top_cities <- na.omit(top_cities)
 
 top_50_cities <- top_cities[1:50, ]
 
-city_viz <- ggplot(top_50_cities, aes(venue_city, freq)) + geom_bar(stat = "identity", col = "green") + coord_flip()
+city_viz <- ggplot(top_50_cities, aes(reorder(venue_city, freq), freq)) + geom_bar(stat = "identity", col = "blue", fill = "orange") + coord_flip()
 
 # 4. Obtaining a count (frequency) of events per country and visualizing the top 20 countries:
 
@@ -39,7 +39,7 @@ top_countries <- na.omit(top_countries)
 
 top_50_countries <- top_countries[1:20, ]
 
-country_viz <- ggplot(top_50_countries, aes (venue_country, freq)) + geom_bar(stat = "identity", col = "yellow") + coord_flip()
+country_viz <- ggplot(top_50_countries, aes (reorder(venue_country, freq), freq)) + geom_bar(stat = "identity", col = "red", fill = "skyblue") + coord_flip()
 
 # 5. Grouping the events by local_date, tabulating and visualizing the number of events per month using a bar chart:
 
@@ -53,7 +53,7 @@ months_count <- events %>% group_by(months=floor_date(events$local_date, "month"
 
 ## Visualization
 
-events_viz <- ggplot(months_count, aes(months, events_count)) + geom_bar(stat = "identity", col = "red")
+events_viz <- ggplot(months_count, aes(months, events_count)) + geom_bar(stat = "identity", col = "green", fill = "yellow")
 
 # ALL VISUALIZATIONS:
 
